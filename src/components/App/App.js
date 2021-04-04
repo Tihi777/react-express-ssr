@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
-import { Switch, Route } from 'react-router-dom';
-import routes from '../../routes'
+import React from 'react';
+import {Route, Switch} from 'react-router-dom';
+import Pages from '../../pages'
 
 import './App.scss';
 
 export const App = () => {
   return (
     <Switch>
-      {routes.map((routeProps) => (
-        <Route key={routeProps.path} {...routeProps} />
+      {Object.keys(Pages).map(route => (
+        <Route key={route} {...Pages[route]}/>
       ))}
     </Switch>
   );

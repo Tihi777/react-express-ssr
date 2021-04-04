@@ -9,7 +9,7 @@ const app = express();
 app.use(compression())
    .use(express.static(resolve(__dirname, '../../dist')))
 
-app.use('/*', renderPage());
+app.use(renderPage());
 
 const port = process.env.PORT || 9000;
 

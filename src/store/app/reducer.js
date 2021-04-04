@@ -1,7 +1,8 @@
 export const appReducer = (app = {}, { type, payload }) => {
+
   switch (type) {
-    case "CASE1":
-      return app;
+    case "TEST":
+      return { ...app, testField: payload };
     default:
       return app;
   }

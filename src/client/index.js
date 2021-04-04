@@ -8,8 +8,6 @@ import {configureStore} from "../store/configureStore";
 
 const { store, history } = configureStore(window.__INITIAL_STATE__);
 
-console.log(history);
-
 loadableReady(() => {
   hydrate(
     <ReduxProvider store={store}>
