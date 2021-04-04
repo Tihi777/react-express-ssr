@@ -1,9 +1,21 @@
 import React from 'react'
-import { hydrate } from 'react-dom';
-import { loadableReady } from '@loadable/component'
+import {hydrate} from 'react-dom';
+import {Provider as ReduxProvider} from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import {loadableReady} from '@loadable/component'
+import {App} from '../components/App/App.js';
+import {configureStore} from "../store/configureStore";
 
-import { App } from '../components/App/App.js';
+const { store, history } = configureStore(window.__INITIAL_STATE__);
+
+console.log(history);
 
 loadableReady(() => {
-  hydrate(<App/>, document.getElementById('root'));
+  hydrate(
+    <ReduxProvider store={store}>
+      <ConnectedRouter history={history}>
+        <App/>
+      </ConnectedRouter>
+    </ReduxProvider>,
+    document.getElementById('root'));
 })
