@@ -14,7 +14,7 @@ module.exports = {
     ],
   },
   server: {
-    test: /\.css$/,
+    test: /\.(s[ac]|c)ss/i,
     loader: 'null-loader',
   },
 }

@@ -2,6 +2,7 @@ const { resolve, join } = require('path')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const LoadablePlugin = require('@loadable/webpack-plugin')
 
 const jsLoader = require('../loaders/javascript.js')
 const cssLoader = require('../loaders/css.js')
@@ -30,6 +31,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].css' }),
+    new LoadablePlugin(),
     !isDevelopment && new CompressionPlugin(),
   ].filter(Boolean),
   resolve: {

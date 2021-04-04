@@ -19,6 +19,8 @@
     "@babel/preset-react": "^7.13.13",
     "@babel/register": "^7.13.14",
     "@babel/runtime": "^7.13.10",
+    "@loadable/babel-plugin": "^5.13.2",
+    "@loadable/webpack-plugin": "^5.14.2",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "compression-webpack-plugin": "^7.1.2",
@@ -43,6 +45,8 @@
     "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
+    "@loadable/component": "^5.14.1",
+    "@loadable/server": "^5.14.2",
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "react": "^17.0.2",

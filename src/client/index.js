@@ -1,5 +1,9 @@
 import React from 'react'
 import { hydrate } from 'react-dom';
-import { App } from '../components/App.js';
+import { loadableReady } from '@loadable/component'
 
-hydrate(<App/>, document.getElementById('root'));
+import { App } from '../components/App/App.js';
+
+loadableReady(() => {
+  hydrate(<App/>, document.getElementById('root'));
+})
