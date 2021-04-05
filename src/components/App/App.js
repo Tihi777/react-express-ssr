@@ -1,15 +1,22 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
+
 import Pages from '../../pages'
+import Header from "../Header/Header";
 
 import './App.scss';
 
 export const App = () => {
   return (
-    <Switch>
-      {Object.keys(Pages).map(route => (
-        <Route key={route} {...Pages[route]}/>
-      ))}
-    </Switch>
+    <>
+      <Header/>
+      <div className="main">
+        <Switch>
+          {Object.keys(Pages).map(route => (
+            <Route key={route} {...Pages[route]}/>
+          ))}
+        </Switch>
+      </div>
+    </>
   );
 }

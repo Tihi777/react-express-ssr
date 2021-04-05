@@ -1,0 +1,55 @@
+@import "../../assets/styles/vars";
+
+.single-post {
+  &__title {
+    font-size: 35px;
+    color: $text-primary;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  &__date {
+    margin-bottom: 15px;
+    text-align: center;
+    color: $text-secondary;
+  }
+
+  &__content {
+    margin-bottom: 50px;
+    line-height: 160%;
+    white-space: break-spaces;
+    color: $text-primary;
+  }
+}
+
+.post-plug {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.65;
+
+  &__title {
+    width: 500px;
+    height: 40px;
+    border-radius: 25px;
+    background: $text-primary;
+    margin-bottom: 5px;
+  }
+
+  &__date {
+    width: 170px;
+    height: 30px;
+    border-radius: 25px;
+    background: $text-secondary;
+    margin-bottom: 15px;
+  }
+
+  &__content {
+    width: 100%;
+    height: 500px;
+    border-radius: 25px;
+    background: $text-primary;
+  }
+}

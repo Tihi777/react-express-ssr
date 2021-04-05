@@ -1,0 +1,1 @@
+export const FETCH_POST_SUCCESS = 'FETCH_POST_SUCCESS';

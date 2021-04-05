@@ -1,15 +1,15 @@
-import {configureStore} from "../../store/configureStore";
-import {Provider as ReduxProvider} from 'react-redux';
-import {getInitialState} from "../../store/initialState";
+import { Provider as ReduxProvider } from 'react-redux';
+import { matchPath } from "react-router";
+import { StaticRouter } from 'react-router-dom';
+import { renderToString } from 'react-dom/server';
+import { ChunkExtractor } from '@loadable/server';
+import { resolve } from 'path';
+
+import { configureStore } from "../../store/configureStore";
+import { getInitialState } from "../../store/initialState";
+
 import Pages from '../../pages.js';
-
-const { ChunkExtractor } = require('@loadable/server');
-const { renderToString } = require('react-dom/server');
-
-const { StaticRouter } = require('react-router-dom');
-const { resolve } = require('path');
-
-const { App } = require('../../components/App/App.js');
+import { App } from '../../components/App/App.js';
 
 export const renderPage = () => async (req, res) => {
   const statsFile = resolve(__dirname, '../../../dist/loadable-stats.json');
@@ -26,9 +26,21 @@ export const renderPage = () => async (req, res) => {
     </ReduxProvider>
   );
 
-  if (Pages[req.url] && typeof Pages[req.url].fetchData === "function") {
-    await Pages[req.url].fetchData(store.dispatch);
-  }
+  const dataRequirements = [];
+
+  Object.keys(Pages).some(page => {
+    const route = Pages[page];
+
+    const match = matchPath(req.url, route);
+
+    if (route?.fetchData && match) {
+      dataRequirements.push(route.fetchData(store.dispatch, match));
+    }
+
+    return !!match;
+  })
+
+  await Promise.all(dataRequirements);
 
   const reactHtml = renderToString(jsx)
   const reduxState = store.getState();
@@ -54,7 +66,6 @@ const getHtml = (reactHtml, chunkExtractor, reduxState = {}) => {
             <meta name="google-site-verification" content="nLL5VlSAgcKL756luG6o6UwKcvR8miU2duRnhU-agmE" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <link rel="shortcut icon" type="image/png" href="/images/favicon.png">
             ${linkTags}
             ${styleTags}
         </head>

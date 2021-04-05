@@ -1,3 +1,5 @@
+@import "../../assets/styles/vars";
+
 html, body {
   margin: 0;
   padding: 0;
@@ -7,11 +9,11 @@ html, body {
 }
 
 body {
-  background: #1d1d1d;
-  color: #f1f1f1;
+  background: $bg-color-primary;
+  color: $text-primary;
 }
 
-button {
-  min-width: 200px;
-  height: 100px;
+.main {
+  margin-top: 80px;
+  padding: 0 100px;
 }

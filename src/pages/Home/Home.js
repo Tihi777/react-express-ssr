@@ -1,20 +1,34 @@
-import { Link } from "react-router-dom";
-import {useSelector} from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import Post from "../../components/Post/Post";
+import { fetchPosts } from "../../store/posts/actions";
+
+import './Home.scss'
 
 const Home = () => {
-  const posts = useSelector(state => state.app.testField) || [];
+  const posts = useSelector(state => state.posts.data).slice(0, 3) || []
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!posts.length) {
+      dispatch(fetchPosts())
+    }
+  }, [posts]);
 
   return (
-    <div>
-      <h1>Home Page</h1>
-      <Link to="/blog">Go to Blog</Link>
-      <ul>
+    <div className="most-popular">
+      <div className="most-popular__title">
+        Most popular posts
+      </div>
+      <div className="most-popular__posts">
         {
-          posts.map(({id, title}) => (
-            <li key={id}>{title}</li>
+          posts.map(post => (
+            <Post key={post.id} {...post}/>
           ))
         }
-        </ul>
+      </div>
     </div>
   );
 };
