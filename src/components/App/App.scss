@@ -16,4 +16,11 @@ body {
 .main {
   margin-top: 80px;
   padding: 0 100px;
+  min-height: 101vh;
+}
+
+@media (max-width: 850px) {
+  .main {
+    padding: 0 20px;
+  }
 }

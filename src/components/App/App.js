@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 
 import Pages from '../../pages'
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 import './App.scss';
 
@@ -17,6 +18,7 @@ export const App = () => {
           ))}
         </Switch>
       </div>
+      <Footer/>
     </>
   );
 }

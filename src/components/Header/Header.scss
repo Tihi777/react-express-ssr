@@ -51,3 +51,21 @@
     }
   }
 }
+
+@media (max-width: 850px) {
+  .header__text {
+    padding: 40px 100px;
+  }
+}
+
+@media (max-width: 500px) {
+  .header__text {
+    padding: 60px 50px;
+    p {
+      font-size: 20px;
+    }
+    h1 {
+      font-size: 35px;
+    }
+  }
+}

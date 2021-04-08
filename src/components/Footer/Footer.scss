@@ -1,0 +1,17 @@
+@import "../../assets/styles/vars";
+
+.footer {
+  border-top: 1px solid $gray;
+  text-align: center;
+  height: 30px;
+  line-height: 25px;
+  color: $text-secondary;
+  font-size: 15px;
+  margin-top: 50px;
+
+
+  &--red {
+    color: $red;
+    font-weight: bold;
+  }
+}
